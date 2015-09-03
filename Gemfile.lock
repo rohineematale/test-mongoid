@@ -172,6 +172,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails
   devise
+  execjs
   haml
   jbuilder
   jquery-rails
@@ -182,7 +183,7 @@ DEPENDENCIES
   sdoc
   therubyracer
   turbolinks
-  uglifier
+  uglifier (>= 1.3.0)
 
 BUNDLED WITH
    1.10.6
