@@ -178,7 +178,7 @@ DEPENDENCIES
   mongoid (~> 4.0.2)
   pry
   rails (= 4.2.2)
-  sass-rails
+  sass-rails (~> 5.0)
   sdoc
   therubyracer
   turbolinks
