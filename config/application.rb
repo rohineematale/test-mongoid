@@ -29,6 +29,26 @@ module FeedFoundrie
     # config.i18n.default_locale = :de
     config.autoload_paths += %W(#{config.root}/lib)
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
     config.action_mailer.delivery_method = :smtp
+
+    # ActionMailer::Base.smtp_settings = {
+    #                                       :port           => 587,
+    #                                       :address        => "smtp.mailgun.org",
+    #                                       :domain         => ENV['mail_domain'],
+    #                                       :user_name      => ENV['mail_username'],
+    #                                       :password       => ENV['mail_password'],
+    #                                       :authentication => :plain,
+    #                                     }
+
+
+    ActionMailer::Base.smtp_settings = {
+                                          :port           => 587,
+                                          :address        => "smtp.mailgun.org",
+                                          :domain         => "sandboxf62e06114cf849cc85e439f14d1af784.mailgun.org",
+                                          :user_name      => "postmaster@sandboxf62e06114cf849cc85e439f14d1af784.mailgun.org",
+                                          :password       => "5dec8db112cf43cdc2e7fd587774c640",
+                                          :authentication => :plain,
+                                        }
   end
 end

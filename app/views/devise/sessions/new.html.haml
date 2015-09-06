@@ -23,6 +23,8 @@
           Don't have an account yet?
           %a{:href => new_registration_path(resource_name)}
             Create an account
+          %br
+          = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
             
       #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
         .modal-dialog
