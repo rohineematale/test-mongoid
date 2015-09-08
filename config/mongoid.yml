@@ -102,8 +102,10 @@ test:
 
 
 production:
-  host: ds053090.mongolab.com
-  port: 53090
-  username: dev
-  password: dev123
-  database: fun10sy
+  sessions:
+    default:
+      database: fun10sy
+      hosts:
+        - ds053090.mongolab.com:53090
+      username: dev
+      password: dev123
