@@ -4,19 +4,8 @@
       = devise_error_messages!
       %h2.form-signin-heading registration now
       .login-wrap
-        %p Enter your personal details below
-        = f.text_field :fullname, autofocus: true, class: "form-control", :placeholder => "Full Name"
-        = f.text_field :address, autofocus: true, class: "form-control", :placeholder => "Address"
-        = f.text_field :username, autofocus: true, class: "form-control", :placeholder => "User Name"
-        = f.text_field :city, autofocus: true, class: "form-control", :placeholder => "City/Town"
-        .radios
-          %label.label_radio.col-lg-6.col-sm-6{:for => "radio-01"}
-            %input#radio-01{:checked => "", :name => "gender", :type => "radio", :value => "male"}/
-            Male
-          %label.label_radio.col-lg-6.col-sm-6{:for => "radio-02"}
-            %input#radio-02{:name => "gender", :type => "radio", :value => "female"}/
-            Female
         %p Enter your account details below
+        = f.text_field :company_name, autofocus: true, class: "form-control", :placeholder => "Company Name"
         = f.email_field :email, autofocus: true, class: "form-control", :placeholder => "Email"
         = f.password_field :password, autocomplete: "off", class: "form-control", :placeholder => "Password"
         = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", :placeholder => "Re-type Password"

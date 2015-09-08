@@ -34,9 +34,5 @@ class Owner
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :fullname, type: String
-  field :address, type: String
-  field :username, type: String
-  field :city, type: String
-  field :gender, type: String
+  field :company_name, type: String
 end
