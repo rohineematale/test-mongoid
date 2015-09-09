@@ -53,3 +53,9 @@
   position: absolute;
   margin: -3px 0px 0px 10px;
 }
+
+
+.error_msg{
+  color: red;
+  margin: -3px 0px 0px 10px;
+}
