@@ -21,9 +21,8 @@ var EditableTable = function () {
                 jqTds[0].innerHTML = '<input type="text" class="form-control small" value="' + aData[0] + '">';
                 jqTds[1].innerHTML = '<input type="text" class="form-control small" value="' + aData[1] + '">';
                 jqTds[2].innerHTML = '<input type="text" class="form-control small" value="' + aData[2] + '">';
-                jqTds[3].innerHTML = '<input type="text" class="form-control small" value="' + aData[3] + '">';
-                jqTds[4].innerHTML = '<a class="edit" href="">Save</a>';
-                jqTds[5].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                jqTds[3].innerHTML = '<a class="edit" href="">Save</a>';
+                jqTds[4].innerHTML = '<a class="cancel" href="">Cancel</a>';
             }
 
             function saveRow(oTable, nRow) {
@@ -75,17 +74,22 @@ var EditableTable = function () {
 
             var nEditing = null;
 
-            $('#editable-sample_new').click(function (e) {
-                e.preventDefault();
-                var aiNew = oTable.fnAddData(['', '', '', '',
-                        '<a class="edit" href="">Edit</a>', '<a class="cancel" data-mode="new" href="">Cancel</a>'
-                ]);
-                var nRow = oTable.fnGetNodes(aiNew[0]);
-                editRow(oTable, nRow);
-                nEditing = nRow;
+            $('#editable-question_new').click(function (e) {
+                $('#qFormRow').show();
+                // e.preventDefault();
+                // var aiNew = oTable.fnAddData(['', '', '',
+                //         '<a class="edit" href="">Edit</a>', '<a class="cancel" data-mode="new" href="">Cancel</a>'
+                // ]);
+                // var nRow = oTable.fnGetNodes(aiNew[0]);
+                // editRow(oTable, nRow);
+                // nEditing = nRow;
             });
 
-            $('#editable-sample a.delete').live('click', function (e) {
+            $('#qFormCancel').click(function (e) {
+                $('#qFormRow').hide();
+            });
+
+            $(document).on('click', '#editable-sample a.delete', function (e) {
                 e.preventDefault();
 
                 if (confirm("Are you sure to delete this row ?") == false) {
@@ -97,7 +101,7 @@ var EditableTable = function () {
                 alert("Deleted! Do not forget to do some ajax to sync with backend :)");
             });
 
-            $('#editable-sample a.cancel').live('click', function (e) {
+            $(document).on('click', '#editable-sample a.cancel', function (e) {
                 e.preventDefault();
                 if ($(this).attr("data-mode") == "new") {
                     var nRow = $(this).parents('tr')[0];
@@ -108,7 +112,7 @@ var EditableTable = function () {
                 }
             });
 
-            $('#editable-sample a.edit').live('click', function (e) {
+            $(document).on('click', '#editable-sample a.edit', function (e) {
                 e.preventDefault();
 
                 /* Get the row as a parent of the link that was clicked on */

@@ -1,0 +1,3 @@
+<%- if @question.errors.blank? %>
+	$("#question<%= @question %>").html("<td><%= escape_javascript(@question.qText) %></td><td><%= escape_javascript(@question.qType) %></td><td><%= escape_javascript(@question.qAns) %></td><td><%= escape_javascript(link_to 'Edit', edit_question_path(question), remote: true) %></td> <td class=''><a class='delete' href='javascript:void(0);'>Delete</a></td></tr>");
+<%- end %>

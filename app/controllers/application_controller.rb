@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  layout :layout_by_resource
+
+  def layout_by_resource
+    devise_controller? ? "application" : "admin"
+  end
+
   def after_sign_up_path_for(resource)
     new_session_path(resource)
   end

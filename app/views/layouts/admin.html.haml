@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title FeedFoundrie
+    = stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "admin", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  %body
+    %section#container
+      = render 'home/admin_header'    
+      = render 'home/admin_side_menu'
+      %section#main-content
+        %section.wrapper.site-min-height
+          = yield
+      %footer.site-footer
+        .text-center
+          2015 &copy; Feed-Foundrie.
+          %a.go-top{:href => "#"}
+            %i.fa.fa-angle-up
