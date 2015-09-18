@@ -3,13 +3,15 @@ class QuestionsController < ApplicationController
   before_filter :set_question, only: [:edit, :update]
 
   def index
+    @questions = current_owner.questions.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def new
   end
 
   def create
-    @question = Question.new(question_params)
+    @question = current_owner.questions.build(question_params)
+    @question.owner_id = current_owner.id
     @question.save
   end
 
@@ -29,7 +31,7 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:qText, :qType, :qAns, :lang)
+      params.require(:question).permit(:qText, :qType, :qAns, :lang, :owner_id)
     end
 
     def set_question

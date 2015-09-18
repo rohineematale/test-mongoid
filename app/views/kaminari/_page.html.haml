@@ -1,0 +1,5 @@
+%li{class: "page#{' active' if page.current? }"}
+  - if page.current?
+    = link_to page, "javascript:void(0);"
+  - else
+    = link_to_unless page.current?, page, url, {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil}

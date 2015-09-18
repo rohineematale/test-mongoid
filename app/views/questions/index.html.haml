@@ -20,7 +20,14 @@
             %li
               %a{:href => "#"} Export to Excel
       .space15
-      %table#editable-sample.table.table-striped.table-hover.table-bordered
+      .row
+        .col-lg-6
+        .col-lg-6
+          #editable-sample_filter.dataTables_filter
+            %label
+              / Search:
+              / %input.form-control.medium{"aria-controls" => "editable-sample", :type => "text"}/
+      %table.table.table-striped.table-hover.table-bordered
         %thead
           %tr
             %th Question
@@ -30,8 +37,10 @@
             %th Delete
         %tbody#table-body
           %tr#qFormRow
-            = render partial: 'form', locals: {question: Question.new}
-          = render partial: 'question_list', locals:{questions: Question.order('created_at DESC')}
+            = render partial: 'form', locals: {question: current_owner.questions.new}
+          = render partial: 'question_list', locals:{questions: @questions}
+
+      = paginate @questions
 / page end
 
 :javascript

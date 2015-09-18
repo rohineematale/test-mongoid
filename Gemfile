@@ -19,7 +19,7 @@ gem 'mongoid', '~> 4.0.2'
 gem 'bson_ext'
 gem 'devise'
 gem 'haml'
-
+gem 'kaminari'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 

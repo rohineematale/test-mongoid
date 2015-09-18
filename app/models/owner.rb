@@ -39,4 +39,6 @@ class Owner
   # field :locked_at,       type: Time
 
   field :company_name, type: String
+
+  embeds_many :questions
 end
