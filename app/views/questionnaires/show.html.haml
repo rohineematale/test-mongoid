@@ -16,11 +16,3 @@
                 %td= check_box_tag "questionnaire[questions][]", question.id, (@questionnaire.questions.present? and @questionnaire.questions.include?(question.id.to_s))
 
         = f.submit
-
-
-/ page end
-
-:javascript
-  jQuery(document).ready(function() {
-    EditableTable.init();
-  });

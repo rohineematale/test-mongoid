@@ -1,5 +1,10 @@
+$('.form_error').remove();
 <%- if @question.errors.blank? %>
-	$('#qFormRow').after("<%= escape_javascript(render partial: 'question_list', locals: {questions: @question.to_a}) %>");
-	$('#newQuestion')[0].reset();
-	$('#qFormCancel').click();
+  $('#qFormRow').after("<%= escape_javascript(render partial: 'question_list', locals: {questions: @question.to_a}) %>");
+  $('#newQuestion')[0].reset();
+  $('#qFormCancel').click();
+<%- else %>
+  <% for field in @question.errors.keys() %>
+    $("#question_<%= field %>").after('<%= escape_javascript("<span class='form_error'>#{@question.errors[field].first}</span>").html_safe %>');
+  <% end %>
 <%- end %>

@@ -8,4 +8,6 @@ class Questionnaire
   field :questions, type: Array
 
   belongs_to :owner, :inverse_of => :questionnaires
+
+  validates_presence_of :name
 end

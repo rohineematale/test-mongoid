@@ -10,5 +10,7 @@ class Question
   QTypeDropdown = [['Radio', 'radio'], ['Checkbox', 'checkbox'], ['Grid', 'grid']]
 
   belongs_to :owner, :inverse_of => :questions
+
+  validates_presence_of :qText, :qType, :qAns
   
 end

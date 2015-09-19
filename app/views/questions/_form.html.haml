@@ -1,6 +1,6 @@
 = form_for question, html: {remote:true, id:'newQuestion'} do |f|
   %td= f.text_field :qText, class: "chart"
   %td= f.select :qType, options_for_select(Question::QTypeDropdown, selected: question.qType), include_blank: true
-  %td= f.text_field :qAns, class: "chart", id: 'server-config-data'
+  %td= f.text_field :qAns, class: "chart"
   %td= f.submit 'Save'
   %td= link_to 'Cancel', "javascript:void(0);", id: 'qFormCancel'
