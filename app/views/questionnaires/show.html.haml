@@ -1,9 +1,9 @@
 %section.panel
   %header.panel-heading
-    Editable Table
+    Add Questions
   .panel-body
     .adv-table.editable-table
-      = form_for @questionnair do |f|
+      = form_for @questionnaire do |f|
         %table.table.table-striped.table-hover.table-bordered
           %thead
             %tr
@@ -13,7 +13,7 @@
             - for question in current_owner.questions
               %tr
                 %td= question.qText
-                %td= f.check_box :questions, question.id
+                %td= check_box_tag "questionnaire[questions][]", question.id, (@questionnaire.questions.present? and @questionnaire.questions.include?(question.id.to_s))
 
         = f.submit
 

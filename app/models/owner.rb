@@ -40,7 +40,7 @@ class Owner
 
   field :company_name, type: String
 
-  embeds_many :questions
-  embeds_many :questionnaires
+  has_many :questions
+  has_many :questionnaires
   
 end

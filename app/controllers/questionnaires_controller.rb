@@ -21,7 +21,11 @@ class QuestionnairesController < ApplicationController
   end
 
   def update
-    @questionnaire.update_attributes(questionnaire_params)
+    if @questionnaire.update_attributes(questionnaire_params)
+      redirect_to questionnaires_path, notice: 'Questions added successfully'
+    else
+
+    end
   end
 
   def destroy
@@ -30,7 +34,7 @@ class QuestionnairesController < ApplicationController
 
   private
     def questionnaire_params
-      params.require(:questionnaire).permit(:name, :desc, :owner_id, :questions)
+      params.require(:questionnaire).permit(:name, :desc, :owner_id, :questions => [])
     end
 
     def set_questionnaire

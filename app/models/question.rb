@@ -9,6 +9,6 @@ class Question
   field :qAns, type: String # Array
   QTypeDropdown = [['Radio', 'radio'], ['Checkbox', 'checkbox'], ['Grid', 'grid']]
 
-  embedded_in :owner, :inverse_of => :questions
+  belongs_to :owner, :inverse_of => :questions
   
 end

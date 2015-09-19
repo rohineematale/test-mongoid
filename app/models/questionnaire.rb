@@ -7,5 +7,5 @@ class Questionnaire
   field :owner_id, type: BSON::ObjectId
   field :questions, type: Array
 
-  embedded_in :owner, :inverse_of => :questionnaires
+  belongs_to :owner, :inverse_of => :questionnaires
 end
