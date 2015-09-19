@@ -1,6 +1,6 @@
 %section.panel
   %header.panel-heading
-    Questions
+    Questionnaires
   .panel-body
     .adv-table.editable-table
       .clearfix
@@ -30,17 +30,17 @@
       %table.table.table-striped.table-hover.table-bordered
         %thead
           %tr
-            %th Question
-            %th Type
-            %th Answer
+            %th Name
+            %th Description
             %th Edit
-            %th Delete
+            %th Add Questions
         %tbody#table-body
           %tr#qFormRow
-            = render partial: 'form', locals: {question: current_owner.questions.new}
-          = render partial: 'question_list', locals:{questions: @questions}
+            = render partial: 'form', locals: {questionnaire: current_owner.questionnaires.new}
+          = render partial: 'questionnaire_list', locals:{questionnaires: @questionnaires}
 
-      = paginate @questions
+      = paginate @questionnaires
+
 / page end
 
 :javascript

@@ -2,18 +2,18 @@
   #sidebar.nav-collapse
     %ul#nav-accordion.sidebar-menu
       %li
-        %a.active{:href => root_path}
+        %a{class: operator_sub_nav('home'), href: root_path}
           %i.fa.fa-dashboard
           %span Dashboard
-        %a{:href => root_path}
+        %a{class: operator_sub_nav(''), :href => "javascript:void(0);"}
           %i.fa.fa-dashboard
           %span Customers
-        %a{:href => questions_path}
+        %a{class: operator_sub_nav('questions'), :href => questions_path}
           %i.fa.fa-dashboard
           %span Questions
-        %a{:href => root_path}
+        %a{class: operator_sub_nav('questionnaires'), :href => questionnaires_path}
           %i.fa.fa-dashboard
           %span Questionnairs
-        %a{:href => root_path}
+        %a{class: operator_sub_nav(''), :href => "javascript:void(0);"}
           %i.fa.fa-dashboard
           %span Devises

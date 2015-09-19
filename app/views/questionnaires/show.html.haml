@@ -1,0 +1,26 @@
+%section.panel
+  %header.panel-heading
+    Editable Table
+  .panel-body
+    .adv-table.editable-table
+      = form_for @questionnair do |f|
+        %table.table.table-striped.table-hover.table-bordered
+          %thead
+            %tr
+              %th Questions
+              %th 
+          %tbody#table-body
+            - for question in current_owner.questions
+              %tr
+                %td= question.qText
+                %td= f.check_box :questions, question.id
+
+        = f.submit
+
+
+/ page end
+
+:javascript
+  jQuery(document).ready(function() {
+    EditableTable.init();
+  });

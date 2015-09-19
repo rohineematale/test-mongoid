@@ -1,10 +1,9 @@
 - for question in questions
   %tr{id: "question#{question.id}"}
-    - if true
-      %td= question.qText
-      %td= question.qType
-      %td= question.qAns
-      %td
-        = link_to 'Edit', edit_question_path(question), remote: true
-      %td
-        %a.delete{:href => "javascript:void(0);"} Delete
+    %td= question.qText
+    %td= question.qType
+    %td= question.qAns
+    %td
+      = link_to 'Edit', edit_question_path(question), remote: true
+    %td
+      %a.delete{:href => "javascript:void(0);"} Delete

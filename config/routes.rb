@@ -4,6 +4,7 @@ FeedFoundrie::Application.routes.draw do
   devise_for :owners
   resources :owners
   resources :questions
+  resources :questionnaires
   # devise_scope :owners do
   #   authenticated :owners do
   #     root 'home#index', as: :authenticated_root

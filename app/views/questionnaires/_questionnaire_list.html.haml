@@ -1,0 +1,8 @@
+- for questionnaire in questionnaires
+  %tr{id: "questionnaire#{questionnaire.id}"}
+    %td= questionnaire.name
+    %td= questionnaire.desc
+    %td
+      = link_to 'Edit', "javascript:void(0);"
+    %td
+      = link_to 'Add Questions', questionnaire_path(questionnaire)
