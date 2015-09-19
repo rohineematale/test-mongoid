@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_filter :set_question, only: [:edit, :update]
+  before_filter :set_question, only: [:edit, :update, :destroy]
 
   def index
     @questions = current_owner.questions.order('created_at DESC').page(params[:page]).per(10)
@@ -26,6 +26,8 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @question.destroy
+    @questions = current_owner.questions.order('created_at DESC').page(params[:page]).per(10)
   end
 
 
@@ -35,6 +37,6 @@ class QuestionsController < ApplicationController
     end
 
     def set_question
-      @question = Question.find(params[:id])
+      @question = current_owner.questions.find(params[:id])
     end
 end

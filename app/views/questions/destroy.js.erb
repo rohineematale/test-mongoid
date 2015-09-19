@@ -1,0 +1,1 @@
+$('#table-body').html("<tr id='qFormRow'><%= escape_javascript(render partial: 'form', locals: {question: current_owner.questions.new}) %>'><%= escape_javascript(render partial: 'question_list', locals:{questions: @questions}) %>")
