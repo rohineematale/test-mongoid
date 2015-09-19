@@ -21,10 +21,14 @@ class QuestionnairesController < ApplicationController
   end
 
   def update
-    if @questionnaire.update_attributes(questionnaire_params)
-      redirect_to questionnaires_path, notice: 'Questions added successfully'
-    else
-
+    respond_to do |format|
+      if @questionnaire.update_attributes(questionnaire_params)
+        format.html { redirect_to questionnaires_path, notice: 'Questions added successfully' }
+        format.js
+      else
+        format.html { render :show }
+        format.js
+      end
     end
   end
 

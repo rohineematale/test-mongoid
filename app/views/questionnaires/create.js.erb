@@ -1,6 +1,6 @@
 $('.form_error').remove();
 <%- if @questionnaire.errors.blank? %>
-  $('#qFormRow').after("<%= escape_javascript(render partial: 'questionnaire_list', locals: {questionnaires: @questionnaire.to_a}) %>");
+  $('#qFormRow').after("<tr id='questionnaire<%= @questionnaire.id %>'><%= escape_javascript(render partial: 'questionnaire_list', locals: {questionnaire: @questionnaire}) %></tr>");
   $('#newQuestion')[0].reset();
   $('#qFormCancel').click();
 <%- else %>

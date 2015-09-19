@@ -1,0 +1,8 @@
+$('.form_error').remove();
+<%- if @questionnaire.errors.blank? %>
+  $("#questionnaire<%= @questionnaire.id %>").html("<%= escape_javascript(render partial: 'questionnaire_list', locals: {questionnaire: @questionnaire}) %>");
+<%- else %>
+  <% for field in @questionnaire.errors.keys() %>
+    $("#questionnaire<%= @questionnaire.id %> #questionnaire_<%= field %>").after('<%= escape_javascript("<span class='form_error'>#{@questionnaire.errors[field].first}</span>").html_safe %>');
+  <% end %>
+<%- end %>

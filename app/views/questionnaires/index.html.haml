@@ -37,7 +37,9 @@
         %tbody#table-body
           %tr#qFormRow
             = render partial: 'form', locals: {questionnaire: current_owner.questionnaires.new}
-          = render partial: 'questionnaire_list', locals:{questionnaires: @questionnaires}
+          - for questionnaire in @questionnaires
+            %tr{id: "questionnaire#{questionnaire.id}"}
+              = render partial: 'questionnaire_list', locals:{questionnaire: questionnaire}
 
       = paginate @questionnaires
 
@@ -45,3 +47,23 @@
   jQuery(document).ready(function() {
     EditableTable.init();
   });
+
+  $(document).on('click', '.saveQuestionnaire', function(){
+    form_url = $(this).parents().siblings('form').attr('action');
+    form_inputs = $(this).parents('tr').find('td').find('input[type="text"], textarea');
+    form_method = $(this).parents('tr').find('input[name="_method"]').val();
+    data = {};
+    form_inputs.each(function( input ) {
+      data[$(this).attr('name')] = $(this).val();
+    });
+    jQuery.ajax({
+        url: form_url,
+        type : "Patch",
+        data: data,
+        dataType: 'script',
+        success: function(data){
+          //jQuery("div#selectBillingState").html(data);
+        },
+      });
+
+  })
