@@ -6,6 +6,7 @@ class Questionnaire
   field :desc, type: String
   field :owner_id, type: BSON::ObjectId
   field :questions, type: Array
+  field :display, type: Boolean, default: true
 
   belongs_to :owner, :inverse_of => :questionnaires
 

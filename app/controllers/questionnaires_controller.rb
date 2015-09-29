@@ -38,7 +38,7 @@ class QuestionnairesController < ApplicationController
 
   private
     def questionnaire_params
-      params.require(:questionnaire).permit(:name, :desc, :owner_id, :questions => [])
+      params.require(:questionnaire).permit(:name, :desc, :owner_id, :display, :questions => [])
     end
 
     def set_questionnaire

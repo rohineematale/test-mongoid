@@ -32,6 +32,7 @@
           %tr
             %th Name
             %th Description
+            %th Display
             %th Edit
             %th Add Questions
         %tbody#table-body
@@ -56,6 +57,7 @@
     form_inputs.each(function( input ) {
       data[$(this).attr('name')] = $(this).val();
     });
+    data["questionnaire[display]"] = $(this).parents('tr').find('td').find('input[type="checkbox"]').is(":checked")
     jQuery.ajax({
         url: form_url,
         type : "Patch",

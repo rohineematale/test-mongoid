@@ -1,5 +1,6 @@
 = form_for questionnaire, html: {remote:true, id:'newQuestion'} do |f|
   %td= f.text_field :name, class: "chart"
   %td= f.text_area :desc, class: "chart", rows: 1
+  %td= f.check_box :display
   %td= f.submit 'Save', class: ((params['action'] == "edit") ? 'saveQuestionnaire' : "")
   %td= link_to 'Cancel', "javascript:void(0);", id: 'qFormCancel'
