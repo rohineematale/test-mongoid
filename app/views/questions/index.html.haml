@@ -5,9 +5,7 @@
     .adv-table.editable-table
       .clearfix
         .btn-group
-          %button#editable-question_new.btn.green
-            Add New
-            %i.fa.fa-plus
+          %a{class: "btn btn-info", "data-toggle": "modal", href: "#newQuestionModal"} Add New
         .btn-group.pull-right
           %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
             Tools
@@ -36,13 +34,16 @@
             %th Edit
             %th Delete
         %tbody#table-body
-          %tr#qFormRow
-            = render partial: 'form', locals: {question: current_owner.questions.new}
           = render partial: 'question_list', locals:{questions: @questions}
-
       = paginate @questions
 
-:javascript
-  jQuery(document).ready(function() {
-    EditableTable.init();
-  });
+#newQuestionModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  = render partial: 'form', locals: {question: current_owner.questions.new}
+
+#editQuestionModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}`
+
+- if false
+  :javascript
+    jQuery(document).ready(function() {
+      EditableTable.init();
+    });

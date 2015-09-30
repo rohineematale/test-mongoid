@@ -12,7 +12,9 @@ class QuestionsController < ApplicationController
   def create
     @question = current_owner.questions.build(question_params)
     @question.owner_id = current_owner.id
-    @question.save
+    if @question.save
+      @questions = current_owner.questions.order('created_at DESC').page(params[:page]).per(10)
+    end
   end
 
   def show
