@@ -2,9 +2,9 @@
   .modal-content
     .modal-header
       %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-      %h4.modal-title New Question
+      %h4.modal-title #{title} Question
     .modal-body
-      = form_for question, html: {remote:true, id:'newQuestion', class: 'form-horizontal'} do |f|
+      = form_for question, html: {remote:true, class: 'form-horizontal'} do |f|
         .form-group
           %label.col-lg-2.col-sm-2.control-label Question
           .col-lg-10
@@ -16,7 +16,8 @@
         .form-group
           %label.col-lg-2.col-sm-2.control-label Options
           .col-lg-10
-            = f.text_field :qAns, class: "form-control", placeholder: 'Options'
+            = f.text_field :qAnsText, class: "form-control qAns", placeholder: 'Options', 'data-role' => "tagsinput"
+            #qAnsError
         .form-group
           .col-lg-offset-2.col-lg-10
             %button.btn.btn-default{:type => "submit"} Save

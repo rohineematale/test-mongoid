@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @question = current_owner.questions.build
   end
 
   def create
@@ -35,7 +36,7 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:qText, :qType, :qAns, :lang, :owner_id)
+      params.require(:question).permit(:qText, :qType, :lang, :owner_id, :qAnsText)
     end
 
     def set_question

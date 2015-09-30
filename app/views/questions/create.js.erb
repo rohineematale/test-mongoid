@@ -1,10 +1,13 @@
 $('.form_error').remove();
 <%- if @question.errors.blank? %>
   $('#table-body').html("<%= escape_javascript(render partial: 'question_list', locals: {questions: @questions}) %>");
-  $('#newQuestion')[0].reset();
-  $('#newQuestionModal').modal('hide')
+  $('#QuestionModal').modal('hide')
 <%- else %>
   <% for field in @question.errors.keys() %>
-    $("#question_<%= field %>").after('<%= escape_javascript("<span class='form_error'>#{@question.errors[field].first}</span>").html_safe %>');
+  	<%- if field == :qAns %>
+  		$("#qAnsError").html('<%= escape_javascript("<span class='form_error'>#{@question.errors[field].first}</span>").html_safe %>');
+  	<%- else %>
+    	$("#question_<%= field %>").after('<%= escape_javascript("<span class='form_error'>#{@question.errors[field].first}</span>").html_safe %>');
+    <%- end %>
   <% end %>
 <%- end %>

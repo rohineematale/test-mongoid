@@ -1,7 +1,3 @@
 $("#QuestionModal").html("<%= escape_javascript(render partial: 'form', locals: {question: @question, title: 'Edit'}) %>")
 $('#QuestionModal').modal('show');
 $('#QuestionModal').find('.qAns').tagsinput();
-
-<%- for value in @question.get_qAns %>
-	$('#QuestionModal').find('.qAns').tagsinput('add', "<%= escape_javascript(raw(value)) %>");
-<%- end %>
