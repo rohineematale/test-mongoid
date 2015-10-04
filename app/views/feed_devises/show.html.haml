@@ -1,0 +1,28 @@
+%section.panel
+  %header.panel-heading
+    Add Questionnaires
+    .pull-right
+      = link_to "<< All Feed Devises", feed_devises_path
+  .panel-body
+    .adv-table.editable-table
+      .clearfix
+        .btn-group
+          =# link_to 'Add New Question', new_question_path(feed_devise: true), remote: true, :class => "btn btn-info"
+      = form_for @feed_devise do |f|
+        %table.table.table-hover.table-bordered#editable-sample
+          %thead
+            %tr
+              %th Select
+              %th Questionnaires
+          %tbody#table-body
+            - for questionnaire in current_owner.get_questionnaires(@feed_devise)
+              %tr
+                %td= check_box_tag "feed_devise[questionnaires][]", questionnaire.id, (@feed_devise.questionnaires.present? and @feed_devise.questionnaires.include?(questionnaire.id.to_s))
+                %td= questionnaire.name
+
+        = f.submit "Add Questionnaires", class: "btn btn-success"
+
+:javascript
+  jQuery(document).ready(function() {
+    EditableTable.init();
+  });

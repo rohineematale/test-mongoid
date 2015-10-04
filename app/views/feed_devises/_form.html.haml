@@ -1,0 +1,6 @@
+= form_for feed_devise, html: {remote:true, id:'newFeedDevise'} do |f|
+  %td= f.text_field :name, class: "chart"
+  %td= f.password_field :password, class: "chart", value: feed_devise.password
+  %td= f.text_field :location
+  %td= f.submit 'Save', class: ((params['action'] == "edit") ? 'saveFeedDevise btn btn-default' : "btn btn-default")
+  %td= link_to 'Cancel', (feed_devise.id.present? ? cancel_feed_devise_path(id: feed_devise.id) : "javascript:void(0);"), remote: true, id: 'qFormCancel'

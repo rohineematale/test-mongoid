@@ -1,0 +1,59 @@
+%section.panel
+  %header.panel-heading
+    Feed Devises
+  .panel-body
+    .adv-table.editable-table
+      .clearfix
+        .btn-group
+          %button#editable-question_new.btn.btn-info
+            Add New
+            %i.fa.fa-plus
+      .space15
+      .row
+        .col-lg-6
+        .col-lg-6
+          #editable-sample_filter.dataTables_filter
+            %label
+              / Search:
+              / %input.form-control.medium{"aria-controls" => "editable-sample", :type => "text"}/
+      %table.table.table-striped.table-hover.table-bordered
+        %thead
+          %tr
+            %th Name
+            %th Password
+            %th Location
+            %th Edit
+            %th Add Questionnaires
+        %tbody#table-body
+          %tr#qFormRow
+            = render partial: 'form', locals: {feed_devise: current_owner.feed_devises.new}
+          - for feed_devise in @feed_devises
+            %tr{id: "feed_devise#{feed_devise.id}"}
+              = render partial: 'feed_devise_list', locals:{feed_devise: feed_devise}
+
+      = paginate @feed_devises
+
+:javascript
+  jQuery(document).ready(function() {
+    EditableTable.init();
+  });
+
+  $(document).on('click', '.saveFeedDevise', function(){
+    form_url = $(this).parents().siblings('form').attr('action');
+    form_inputs = $(this).parents('tr').find('td').find('input[type="text"], input[type="password"]');
+    form_method = $(this).parents('tr').find('input[name="_method"]').val();
+    data = {};
+    form_inputs.each(function( input ) {
+      data[$(this).attr('name')] = $(this).val();
+    });
+    jQuery.ajax({
+        url: form_url,
+        type : "Patch",
+        data: data,
+        dataType: 'script',
+        success: function(data){
+          //jQuery("div#selectBillingState").html(data);
+        },
+      });
+
+  })

@@ -1,0 +1,10 @@
+$('.form_error').remove();
+<%- if @feed_devise.errors.blank? %>
+  $('#qFormRow').after("<tr id='feed_devise<%= @feed_devise.id %>'><%= escape_javascript(render partial: 'feed_devise_list', locals: {feed_devise: @feed_devise}) %></tr>");
+  $('#newFeedDevise')[0].reset();
+  $('#qFormRow').hide();
+<%- else %>
+  <% for field in @feed_devise.errors.keys() %>
+    $("#feed_devise_<%= field %>").after('<%= escape_javascript("<span class='form_error'>#{@feed_devise.errors[field].first}</span>").html_safe %>');
+  <% end %>
+<%- end %>

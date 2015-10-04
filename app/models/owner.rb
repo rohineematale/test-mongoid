@@ -42,6 +42,7 @@ class Owner
 
   has_many :questions
   has_many :questionnaires
+  has_many :feed_devises
 
   def get_questions(questionnaire)
     if questionnaire.questions.present?
@@ -52,6 +53,18 @@ class Owner
       questions_arr.flatten
     else
       self.questions
+    end
+  end
+
+  def get_questionnaires(feed_devise)
+    if feed_devise.questionnaires.present?
+      questionnaires = self.questionnaires
+      questionnaires_arr = []
+      questionnaires_arr = questionnaires.select{|que| (feed_devise.questionnaires).include?(que.id.to_s)}
+      questionnaires_arr << questionnaires.reject{|que| (feed_devise.questionnaires).include?(que.id.to_s)}
+      questionnaires_arr.flatten
+    else
+      self.questionnaires
     end
   end
   

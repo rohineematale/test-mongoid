@@ -1,0 +1,2 @@
+module FeedDevisesHelper
+end

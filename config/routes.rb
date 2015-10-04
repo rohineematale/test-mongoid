@@ -9,6 +9,11 @@ FeedFoundrie::Application.routes.draw do
       get 'cancel'
     end
   end
+  resources :feed_devises do
+    member do
+      get 'cancel'
+    end
+  end
   # devise_scope :owners do
   #   authenticated :owners do
   #     root 'home#index', as: :authenticated_root

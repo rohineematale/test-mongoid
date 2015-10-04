@@ -1,0 +1,8 @@
+$('.form_error').remove();
+<%- if @feed_devise.errors.blank? %>
+  $("#feed_devise<%= @feed_devise.id %>").html("<%= escape_javascript(render partial: 'feed_devise_list', locals: {feed_devise: @feed_devise}) %>");
+<%- else %>
+  <% for field in @feed_devise.errors.keys() %>
+    $("#feed_devise<%= @feed_devise.id %> #feed_devise_<%= field %>").after('<%= escape_javascript("<span class='form_error'>#{@feed_devise.errors[field].first}</span>").html_safe %>');
+  <% end %>
+<%- end %>

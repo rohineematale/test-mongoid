@@ -2,7 +2,7 @@ $('.form_error').remove();
 <%- if @questionnaire.errors.blank? %>
   $('#qFormRow').after("<tr id='questionnaire<%= @questionnaire.id %>'><%= escape_javascript(render partial: 'questionnaire_list', locals: {questionnaire: @questionnaire}) %></tr>");
   $('#newQuestion')[0].reset();
-  $('#qFormCancel').click();
+  $('#qFormRow').hide();
 <%- else %>
   <% for field in @questionnaire.errors.keys() %>
     $("#questionnaire_<%= field %>").after('<%= escape_javascript("<span class='form_error'>#{@questionnaire.errors[field].first}</span>").html_safe %>');

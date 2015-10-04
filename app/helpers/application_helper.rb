@@ -6,6 +6,7 @@ module ApplicationHelper
     "home"=>"home",
     "questions"=>"questions",
     "questionnaires"=>"questionnaires",
+    "feed_devises"=>"feed_devises",
 	  }
 	  "active" if class_name == (classes[controller.controller_name + '.' + controller.action_name] || classes[controller.controller_name] || '')
 	end

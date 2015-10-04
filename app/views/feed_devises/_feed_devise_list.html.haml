@@ -1,0 +1,7 @@
+%td= feed_devise.name
+%td= feed_devise.password
+%td= feed_devise.location
+%td
+  = link_to 'Edit', edit_feed_devise_path(id: feed_devise.id), remote: true
+%td
+  = link_to 'Add Questionnaires', feed_devise_path(id: feed_devise.id)
