@@ -1,6 +1,7 @@
+$('.form_error').remove();
 <%- if @question.errors.blank? %>
 	$('#QuestionModal').modal('hide');
-	$("#question<%= @question.id %>").html("<td><%= escape_javascript(@question.qText) %></td><td><%= escape_javascript(@question.qType) %></td><td><%= escape_javascript(raw(@question.qAns)) %></td><td><%= escape_javascript(link_to 'Edit', edit_question_path(@question), remote: true) %></td> <td class=''><a class='delete' href='javascript:void(0);'>Delete</a></td></tr>");
+	$("#question<%= @question.id %>").html("<td><%= escape_javascript(@question.qText) %></td><td><%= escape_javascript(@question.qType) %></td><td><%= escape_javascript(raw(@question.get_qAns.join(", "))) %></td><td><%= escape_javascript(link_to 'Edit', edit_question_path(@question), remote: true) %></td></tr>");
 <%- else %>
   <% for field in @question.errors.keys() %>
   	<%- if field == :qAns %>

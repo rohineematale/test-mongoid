@@ -29,8 +29,8 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question.destroy
-    @questions = current_owner.questions.order('created_at DESC').page(params[:page]).per(10)
+    # @question.destroy
+    # @questions = current_owner.questions.order('created_at DESC').page(params[:page]).per(10)
   end
 
 

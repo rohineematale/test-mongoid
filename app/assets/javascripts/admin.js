@@ -39,3 +39,4 @@
 //= require admin/data-tables/DT_bootstrap
 //= require admin/data-tables/jquery.dataTables
 //= require admin/bootstrap-tagsinput.min
+//= require questions

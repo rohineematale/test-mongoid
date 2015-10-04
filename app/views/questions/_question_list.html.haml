@@ -2,8 +2,6 @@
   %tr{id: "question#{question.id}"}
     %td= question.qText
     %td= question.qType
-    %td= question.qAns
+    %td= question.get_qAns.join(", ")
     %td
       = link_to 'Edit', edit_question_path(id: question.id), remote: true
-    %td
-      = link_to 'Delete', question_path(id: question.id), method: "Delete", remote: true

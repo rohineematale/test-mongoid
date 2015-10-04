@@ -1,18 +1,30 @@
 %section.panel
   %header.panel-heading
     Add Questions
+    .pull-right
+      = link_to "<< All Questionnaires", questionnaires_path
   .panel-body
     .adv-table.editable-table
+      .clearfix
+        .btn-group
+          = link_to 'Add New Question', new_question_path(questionnaire: true), remote: true, :class => "btn btn-info"
       = form_for @questionnaire do |f|
-        %table.table.table-striped.table-hover.table-bordered
+        %table.table.table-hover.table-bordered#editable-sample
           %thead
             %tr
+              %th Select
               %th Questions
-              %th 
           %tbody#table-body
-            - for question in current_owner.questions
+            - for question in current_owner.get_questions(@questionnaire)
               %tr
-                %td= question.qText
                 %td= check_box_tag "questionnaire[questions][]", question.id, (@questionnaire.questions.present? and @questionnaire.questions.include?(question.id.to_s))
+                %td= question.qText
 
-        = f.submit
+        = f.submit "Add Questions", class: "btn btn-success"
+
+#QuestionModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+
+:javascript
+  jQuery(document).ready(function() {
+    EditableTable.init();
+  });

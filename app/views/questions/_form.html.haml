@@ -13,11 +13,13 @@
           %label.col-lg-2.col-sm-2.control-label{:for => "inputPassword1"} Type
           .col-lg-10
             = f.select :qType, options_for_select(Question::QTypeDropdown, selected: question.qType), {include_blank: true}, class: 'form-control m-bot15'
-        .form-group
-          %label.col-lg-2.col-sm-2.control-label Options
+        .form-group{id: ((params[:action] == 'edit') ? "" : 'ansContainer')}
+          %label.col-lg-2.col-sm-2.control-label Answers
           .col-lg-10
-            = f.text_field :qAnsText, class: "form-control qAns", placeholder: 'Options', 'data-role' => "tagsinput"
+            = f.text_field :qAnsText, class: "form-control qAns", placeholder: 'Answers', 'data-role' => "tagsinput"
             #qAnsError
         .form-group
           .col-lg-offset-2.col-lg-10
-            %button.btn.btn-default{:type => "submit"} Save
+            %button.btn.btn-success{:type => "submit"} Save
+            - if params[:questionnaire].present?
+              = hidden_field_tag 'questionnaire', params[:questionnaire]

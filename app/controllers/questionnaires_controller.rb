@@ -1,5 +1,5 @@
 class QuestionnairesController < ApplicationController
-	before_filter :set_questionnaire, only: [:show, :edit, :update]
+	before_filter :set_questionnaire, only: [:show, :edit, :update, :cancel]
 
   def index
     @questionnaires = current_owner.questionnaires.order('created_at DESC').page(params[:page]).per(10)
@@ -30,6 +30,9 @@ class QuestionnairesController < ApplicationController
         format.js
       end
     end
+  end
+
+  def cancel
   end
 
   def destroy

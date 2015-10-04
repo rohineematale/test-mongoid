@@ -534,7 +534,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .top-nav ul.top-menu > li .dropdown-menu.logout {
-    width: 268px !important;
+    width: 168px !important;
 
 }
 
@@ -6214,3 +6214,4 @@ header.blue-bg .search:focus {
 
 
 #qFormRow{display: none;}
+#ansContainer{display: none;}

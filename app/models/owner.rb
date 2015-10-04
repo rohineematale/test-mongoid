@@ -42,5 +42,17 @@ class Owner
 
   has_many :questions
   has_many :questionnaires
+
+  def get_questions(questionnaire)
+    if questionnaire.questions.present?
+      questions = self.questions
+      questions_arr = []
+      questions_arr = questions.select{|que| (questionnaire.questions).include?(que.id.to_s)}
+      questions_arr << questions.reject{|que| (questionnaire.questions).include?(que.id.to_s)}
+      questions_arr.flatten
+    else
+      self.questions
+    end
+  end
   
 end

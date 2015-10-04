@@ -6,17 +6,6 @@
       .clearfix
         .btn-group
           = link_to 'Add New', new_question_path, remote: true, :class => "btn btn-info"
-        .btn-group.pull-right
-          %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-            Tools
-            %i.fa.fa-angle-down
-          %ul.dropdown-menu.pull-right
-            %li
-              %a{:href => "#"} Print
-            %li
-              %a{:href => "#"} Save as PDF
-            %li
-              %a{:href => "#"} Export to Excel
       .space15
       .row
         .col-lg-6
@@ -32,7 +21,6 @@
             %th Type
             %th Answer
             %th Edit
-            %th Delete
         %tbody#table-body
           = render partial: 'question_list', locals:{questions: @questions}
       = paginate @questions

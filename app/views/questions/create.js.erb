@@ -1,6 +1,10 @@
 $('.form_error').remove();
 <%- if @question.errors.blank? %>
-  $('#table-body').html("<%= escape_javascript(render partial: 'question_list', locals: {questions: @questions}) %>");
+	<%- if params[:questionnaire] %>
+		$('#table-body').prepend("<tr class='odd'><td class=''><input type='checkbox' name='questionnaire[questions][]' value=" + "<%= escape_javascript(@question.id.to_s) %>" + " checked='checked'></td><td class=' sorting_1'>" + "<%= escape_javascript(@question.qText) %>" + "</td></tr>")
+	<%- else %>
+  	$('#table-body').html("<%= escape_javascript(render partial: 'question_list', locals: {questions: @questions}) %>");
+  <%- end %>
   $('#QuestionModal').modal('hide')
 <%- else %>
   <% for field in @question.errors.keys() %>

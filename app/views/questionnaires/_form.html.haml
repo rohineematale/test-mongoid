@@ -2,5 +2,5 @@
   %td= f.text_field :name, class: "chart"
   %td= f.text_area :desc, class: "chart", rows: 1
   %td= f.check_box :display
-  %td= f.submit 'Save', class: ((params['action'] == "edit") ? 'saveQuestionnaire' : "")
-  %td= link_to 'Cancel', "javascript:void(0);", id: 'qFormCancel'
+  %td= f.submit 'Save', class: ((params['action'] == "edit") ? 'saveQuestionnaire btn btn-default' : "btn btn-default")
+  %td= link_to 'Cancel', (questionnaire.id.present? ? cancel_questionnaire_path(id: questionnaire.id) : "javascript:void(0);"), remote: true, id: 'qFormCancel'

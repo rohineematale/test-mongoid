@@ -9,6 +9,19 @@
       %li
         %input.form-control.search{:placeholder => "Search", :type => "text"}
       %li.dropdown
-        %a{:href => destroy_owner_session_path }
-          %i.fa.fa-key
-          Sign Out
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %span.username= current_owner.email
+          %b.caret
+        %ul.dropdown-menu.extended.logout
+          .log-arrow-up
+          %li
+            %a{:href => "#"}
+              %i.fa.fa-suitcase
+          %li
+            %a{:href => "#"}
+              %i.fa.fa-suitcase
+              Profile
+          %li
+            %a{:href => destroy_owner_session_path }
+              %i.fa.fa-key
+              Sign Out
